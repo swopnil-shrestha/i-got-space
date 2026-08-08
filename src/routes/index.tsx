@@ -39,8 +39,8 @@ function Hero() {
     <section className="relative overflow-hidden">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 pb-16 pt-14 md:grid-cols-[1.05fr_1fr] md:pt-20">
         <div className="flex flex-col justify-center">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs uppercase tracking-widest text-muted-foreground">
-            <Sparkles className="h-3.5 w-3.5 text-primary" /> New • now in Kathmandu
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-border bg-surface px-3 py-1 text-xs uppercase tracking-widest text-muted-foreground">
+            <Sparkles className="h-3.5 w-3.5 text-secondary" /> New • now in Kathmandu
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] text-foreground md:text-7xl">
             Every empty spot,<br />
@@ -79,8 +79,8 @@ function Hero() {
         </div>
 
         <div className="relative">
-          <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-sunset opacity-30 blur-3xl" />
-          <div className="overflow-hidden rounded-[2rem] border border-border shadow-glow">
+          <div className="absolute -inset-3 -z-10 rounded-[2.5rem] bg-blue" />
+          <div className="overflow-hidden rounded-[2rem] border-2 border-border shadow-glow">
             <img
               src={heroMap}
               alt="Map of available parking spots glowing across a city at sunset"
@@ -119,7 +119,7 @@ function FloatingCard({ className = "" }) {
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between text-xs">
-        <span className="rounded-full bg-primary/15 px-2 py-1 text-primary">Available now</span>
+        <span className="rounded-full bg-primary px-2 py-1 text-secondary">Available now</span>
         <span className="text-muted-foreground">$1.5/hr</span>
       </div>
     </div>
@@ -141,7 +141,7 @@ function BentoShowcase() {
     <section id="how" className="mx-auto max-w-7xl px-6 py-20">
       <div className="mb-10 flex items-end justify-between gap-6">
         <div>
-          <p className="text-sm uppercase tracking-widest text-primary">What's inside</p>
+          <p className="text-sm uppercase tracking-widest text-secondary">What's inside</p>
           <h2 className="mt-2 font-display text-4xl font-bold md:text-5xl">
             A whole parking city in your pocket.
           </h2>
@@ -155,12 +155,12 @@ function BentoShowcase() {
         {/* Live map tile */}
         <Link
           to="/map"
-          className="group relative col-span-1 row-span-2 overflow-hidden rounded-3xl border border-border md:col-span-3 md:row-span-2"
+          className="group relative col-span-1 row-span-2 overflow-hidden rounded-3xl border-2 border-border md:col-span-3 md:row-span-2"
         >
           <img src={heroMap} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" width={1536} height={1280} />
           <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-end p-6">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">Live map</span>
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs text-secondary">Live map</span>
             <h3 className="mt-2 font-display text-2xl font-semibold">See available spots in real time</h3>
             <p className="mt-1 max-w-md text-sm text-muted-foreground">Markers update the moment a space is booked, freed or blocked.</p>
           </div>
@@ -169,7 +169,7 @@ function BentoShowcase() {
         {/* Vehicle filter */}
         <div className="col-span-1 row-span-1 rounded-3xl glass p-6 md:col-span-3">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/15 text-primary"><Car className="h-5 w-5" /></span>
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-secondary"><Car className="h-5 w-5" /></span>
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent/20 text-accent"><Bike className="h-5 w-5" /></span>
           </div>
           <h3 className="mt-4 font-display text-xl font-semibold">Cars or bikes — filter by what you ride.</h3>
@@ -177,8 +177,8 @@ function BentoShowcase() {
         </div>
 
         {/* Booking */}
-        <div className="col-span-1 row-span-1 rounded-3xl border border-border bg-surface/60 p-6 md:col-span-2">
-          <Clock className="h-6 w-6 text-primary" />
+        <div className="col-span-1 row-span-1 rounded-3xl border-2 border-border bg-surface p-6 md:col-span-2">
+          <Clock className="h-6 w-6 text-secondary" />
           <h3 className="mt-4 font-display text-xl font-semibold">Book in 60 seconds.</h3>
           <p className="mt-1 text-sm text-muted-foreground">Pick a time, pay securely, drive in. No more circling the block.</p>
         </div>
@@ -198,8 +198,8 @@ function BentoShowcase() {
         </div>
 
         {/* Reviews */}
-        <div className="col-span-1 row-span-1 rounded-3xl border border-border bg-surface/60 p-6 md:col-span-3">
-          <div className="flex items-center gap-1 text-primary">
+        <div className="col-span-1 row-span-1 rounded-3xl border-2 border-border bg-surface p-6 md:col-span-3">
+          <div className="flex items-center gap-1 text-secondary">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="h-4 w-4 fill-current" />
             ))}
@@ -225,8 +225,8 @@ function HowItWorks() {
       <h2 className="font-display text-4xl font-bold md:text-5xl">Three steps. Zero stress.</h2>
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {steps.map((s) => (
-          <div key={s.n} className="rounded-3xl border border-border bg-surface/60 p-8 transition hover:border-primary/50">
-            <span className="font-display text-sm text-primary">{s.n}</span>
+          <div key={s.n} className="rounded-3xl border-2 border-border bg-surface p-8 transition hover:border-primary/50">
+            <span className="font-display text-sm text-secondary">{s.n}</span>
             <h3 className="mt-3 font-display text-2xl font-semibold">{s.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
           </div>
@@ -239,7 +239,7 @@ function HowItWorks() {
 function ProvidersBand() {
   return (
     <section id="providers" className="mx-auto max-w-7xl px-6 py-20">
-      <div className="grid gap-10 rounded-[2rem] border border-border bg-surface/60 p-8 md:grid-cols-2 md:p-12">
+      <div className="grid gap-10 rounded-[2rem] border-2 border-border bg-surface p-8 md:grid-cols-2 md:p-12">
         <div>
           <p className="text-sm uppercase tracking-widest text-accent">For space providers</p>
           <h2 className="mt-2 font-display text-4xl font-bold md:text-5xl">
@@ -257,14 +257,14 @@ function ProvidersBand() {
               "Get paid weekly to your bank",
             ].map((t) => (
               <li key={t} className="flex items-center gap-3">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary/15 text-primary">✓</span>
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-secondary">✓</span>
                 {t}
               </li>
             ))}
           </ul>
           <a
             href="#"
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-surface"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-surface"
           >
             Become a host <ArrowRight className="h-4 w-4" />
           </a>

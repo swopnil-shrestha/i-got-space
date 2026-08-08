@@ -42,7 +42,7 @@ function MapPage() {
         {/* Sidebar: filters + list */}
         <aside className="space-y-4">
           <div className="rounded-2xl glass p-4 shadow-soft">
-            <div className="flex items-center gap-2 rounded-full border border-border bg-background/40 px-4 py-2">
+            <div className="flex items-center gap-2 rounded-full border-2 border-border bg-background/40 px-4 py-2">
               <Search className="h-4 w-4 text-muted-foreground" />
               <input
                 value={query}
@@ -96,7 +96,7 @@ function MapPage() {
               <SpotCard key={s.id} spot={s} active={selected?.id === s.id} onClick={() => setSelected(s)} />
             ))}
             {filtered.length === 0 && (
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 text-center text-sm text-muted-foreground">
+              <div className="rounded-2xl border-2 border-border bg-surface p-6 text-center text-sm text-muted-foreground">
                 No spots match these filters. Try widening your search.
               </div>
             )}
@@ -104,7 +104,7 @@ function MapPage() {
         </aside>
 
         {/* Map */}
-        <section className="relative h-[calc(100vh-7rem)] min-h-[520px] overflow-hidden rounded-3xl border border-border shadow-soft">
+        <section className="relative h-[calc(100vh-7rem)] min-h-[520px] overflow-hidden rounded-3xl border-2 border-border shadow-soft">
           <MockMap spots={filtered} selected={selected} onSelect={setSelected} />
           {selected && <DetailSheet spot={selected} onClose={() => setSelected(null)} />}
         </section>
@@ -131,22 +131,23 @@ function SpotCard({ spot, active, onClick }: { spot: Spot; active: boolean; onCl
   const status = spot.available === 0 ? "Full" : spot.available <= 2 ? "Limited" : "Available";
   const statusColor =
     spot.available === 0
-      ? "bg-destructive/20 text-destructive"
+      ? "bg-destructive text-destructive-foreground"
       : spot.available <= 2
-        ? "bg-accent/20 text-accent"
-        : "bg-primary/20 text-primary";
+        ? "bg-primary text-primary-foreground"
+        : "bg-accent text-accent-foreground";
+
   return (
     <button
       onClick={onClick}
       className={`flex w-full gap-3 rounded-2xl border p-3 text-left transition ${
-        active ? "border-primary bg-surface shadow-glow" : "border-border bg-surface/60 hover:border-primary/50"
+        active ? "border-primary bg-surface shadow-glow" : "border-border bg-surface hover:border-primary/50"
       }`}
     >
       <img src={spot.image} alt={spot.name} loading="lazy" className="h-20 w-20 flex-none rounded-xl object-cover" />
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <p className="truncate font-display font-semibold">{spot.name}</p>
-          <span className="flex items-center gap-1 text-xs text-primary">
+          <span className="flex items-center gap-1 text-xs text-secondary">
             <Star className="h-3 w-3 fill-current" />
             {spot.rating}
           </span>
@@ -168,24 +169,20 @@ function MockMap({ spots, selected, onSelect }: { spots: Spot[]; selected: Spot 
       {/* Map base */}
       <div
         className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 30% 20%, oklch(0.30 0.08 30 / 0.65), transparent 60%)," +
-            "radial-gradient(100% 90% at 80% 70%, oklch(0.30 0.10 320 / 0.55), transparent 60%)," +
-            "linear-gradient(135deg, oklch(0.18 0.05 285), oklch(0.22 0.07 320))",
-        }}
+        style={{ background: "var(--surface-2)" }}
       />
       {/* Streets pattern */}
-      <svg className="absolute inset-0 h-full w-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute inset-0 h-full w-full opacity-60" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.75 0.05 80)" strokeWidth="0.6" />
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.16 0 0 / 0.18)" strokeWidth="1" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
-        <path d="M0,70%  Q40%,40% 100%,55%" stroke="oklch(0.78 0.17 65 / 0.6)" strokeWidth="3" fill="none" />
-        <path d="M20%,0 Q40%,60% 30%,100%" stroke="oklch(0.62 0.24 0 / 0.5)" strokeWidth="3" fill="none" />
+        <path d="M0,70%  Q40%,40% 100%,55%" stroke="var(--magenta)" strokeWidth="10" fill="none" />
+        <path d="M20%,0 Q40%,60% 30%,100%" stroke="var(--primary)" strokeWidth="10" fill="none" />
       </svg>
+
 
       {/* You-are-here */}
       <div className="absolute" style={{ left: "50%", top: "55%" }}>
@@ -251,7 +248,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
           </div>
           <p className="truncate text-xs text-muted-foreground">{spot.address}</p>
           <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1 text-primary"><Star className="h-3 w-3 fill-current" />{spot.rating}</span>
+            <span className="flex items-center gap-1 text-secondary"><Star className="h-3 w-3 fill-current" />{spot.rating}</span>
             <span>{spot.distanceKm} km away</span>
             <span>{spot.available}/{spot.total} free</span>
           </div>
@@ -260,7 +257,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
 
       <div className="mt-4 flex flex-wrap gap-2 text-xs">
         {spot.vehicles.map((v) => (
-          <span key={v} className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-1 text-primary">
+          <span key={v} className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-1 text-secondary">
             {v === "car" ? <Car className="h-3 w-3" /> : <Bike className="h-3 w-3" />} {v}
           </span>
         ))}
@@ -278,7 +275,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
           <p className="font-display text-2xl font-bold text-sunset">${spot.pricePerHour}<span className="text-sm text-muted-foreground">/hr</span></p>
         </div>
         <div className="flex gap-2">
-          <button className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-2 text-sm hover:bg-surface">
+          <button className="inline-flex items-center gap-1 rounded-full border-2 border-border px-3 py-2 text-sm hover:bg-surface">
             <Navigation className="h-4 w-4" /> Directions
           </button>
           <button
