@@ -158,7 +158,7 @@ function BentoShowcase() {
           className="group relative col-span-1 row-span-2 overflow-hidden rounded-3xl border border-border md:col-span-3 md:row-span-2"
         >
           <img src={heroMap} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" width={1536} height={1280} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+          <div className="absolute inset-0 bg-background/60" />
           <div className="absolute inset-0 flex flex-col justify-end p-6">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs text-primary">Live map</span>
             <h3 className="mt-2 font-display text-2xl font-semibold">See available spots in real time</h3>
@@ -286,7 +286,7 @@ function CTA() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="relative overflow-hidden rounded-[2rem] bg-sunset px-8 py-16 text-center text-primary-foreground shadow-glow md:px-16">
-        <div className="absolute inset-0 -z-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 20% 20%, white, transparent 40%), radial-gradient(circle at 80% 80%, white, transparent 40%)" }} />
+        <div className="absolute inset-0 -z-0 opacity-20" style={{ backgroundColor: "var(--lime)" }} />
         <h2 className="relative font-display text-4xl font-bold md:text-6xl">Ready to never circle the block again?</h2>
         <p className="relative mx-auto mt-4 max-w-xl opacity-90">Open the live map and grab a guaranteed spot near you.</p>
         <Link
