@@ -44,44 +44,38 @@
 :root {
   --radius: 1rem;
 
-  /* Sunset Blaze palette in oklch */
-  --background: oklch(0.16 0.04 295);          /* deep night violet */
-  --foreground: oklch(0.97 0.02 80);
-  --surface: oklch(0.20 0.05 295);
-  --surface-2: oklch(0.24 0.06 295);
+  /* Solid theme — signature yellow #F5F527 on near-black */
+  --background: oklch(0.16 0 0);
+  --foreground: oklch(0.97 0 0);
+  --surface: oklch(0.20 0 0);
+  --surface-2: oklch(0.25 0 0);
 
-  --card: oklch(0.21 0.05 295);
-  --card-foreground: oklch(0.97 0.02 80);
-  --popover: oklch(0.21 0.05 295);
-  --popover-foreground: oklch(0.97 0.02 80);
+  --card: oklch(0.20 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.20 0 0);
+  --popover-foreground: oklch(0.97 0 0);
 
-  --primary: oklch(0.72 0.20 38);              /* #ff6b35 orange */
-  --primary-foreground: oklch(0.15 0.03 295);
-  --ember: oklch(0.78 0.17 65);                /* #f7931e amber */
-  --magenta: oklch(0.62 0.24 0);               /* #e84393 magenta */
-  --violet: oklch(0.55 0.20 285);              /* #6c5ce7 violet */
+  --primary: oklch(0.94 0.21 108);             /* #F5F527 */
+  --primary-foreground: oklch(0.16 0 0);
+  --ember: oklch(0.94 0.21 108);
+  --magenta: oklch(0.85 0.17 105);
+  --violet: oklch(0.75 0.14 105);
 
-  --secondary: oklch(0.26 0.06 295);
-  --secondary-foreground: oklch(0.97 0.02 80);
-  --muted: oklch(0.24 0.05 295);
-  --muted-foreground: oklch(0.74 0.03 290);
-  --accent: oklch(0.62 0.24 0);
-  --accent-foreground: oklch(0.98 0.02 80);
-  --destructive: oklch(0.62 0.25 25);
-  --destructive-foreground: oklch(0.98 0.02 80);
+  --secondary: oklch(0.26 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.24 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.94 0.21 108);
+  --accent-foreground: oklch(0.16 0 0);
+  --destructive: oklch(0.58 0.20 27);
+  --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.30 0.05 295 / 60%);
-  --input: oklch(0.30 0.05 295 / 70%);
-  --ring: oklch(0.72 0.20 38);
+  --border: oklch(0.32 0 0);
+  --input: oklch(0.32 0 0);
+  --ring: oklch(0.94 0.21 108);
 
-  --gradient-sunset: linear-gradient(135deg, oklch(0.72 0.20 38) 0%, oklch(0.62 0.24 0) 55%, oklch(0.55 0.20 285) 100%);
-  --gradient-ember: linear-gradient(135deg, oklch(0.78 0.17 65), oklch(0.72 0.20 38));
-  --gradient-aurora: radial-gradient(60% 80% at 15% 10%, oklch(0.72 0.20 38 / 25%), transparent 60%),
-                     radial-gradient(50% 70% at 90% 20%, oklch(0.62 0.24 0 / 22%), transparent 60%),
-                     radial-gradient(70% 90% at 50% 110%, oklch(0.55 0.20 285 / 30%), transparent 60%);
-
-  --shadow-glow: 0 20px 60px -20px oklch(0.62 0.24 0 / 50%);
-  --shadow-soft: 0 10px 40px -15px oklch(0.10 0.05 295 / 60%);
+  --shadow-glow: 0 16px 40px -20px oklch(0.94 0.21 108 / 45%);
+  --shadow-soft: 0 10px 30px -15px oklch(0 0 0 / 60%);
 }
 
 @layer base {
@@ -94,10 +88,6 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  body {
-    background-image: var(--gradient-aurora);
-    background-attachment: fixed;
-  }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
@@ -105,20 +95,20 @@
 }
 
 @layer utilities {
-  .bg-sunset { background-image: var(--gradient-sunset); }
-  .bg-ember-gradient { background-image: var(--gradient-ember); }
-  .text-sunset {
-    background-image: var(--gradient-sunset);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .bg-sunset {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
+  .bg-ember-gradient {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+  .text-sunset { color: var(--primary); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .glass {
-    background: oklch(0.22 0.05 295 / 65%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid oklch(0.40 0.05 295 / 40%);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
   }
 }
+
