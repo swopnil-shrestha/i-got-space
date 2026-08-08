@@ -42,7 +42,7 @@ function MapPage() {
         {/* Sidebar: filters + list */}
         <aside className="space-y-4">
           <div className="rounded-2xl glass p-4 shadow-soft">
-            <div className="flex items-center gap-2 rounded-full border border-border bg-background/40 px-4 py-2">
+            <div className="flex items-center gap-2 rounded-full border-2 border-border bg-background/40 px-4 py-2">
               <Search className="h-4 w-4 text-muted-foreground" />
               <input
                 value={query}
@@ -96,7 +96,7 @@ function MapPage() {
               <SpotCard key={s.id} spot={s} active={selected?.id === s.id} onClick={() => setSelected(s)} />
             ))}
             {filtered.length === 0 && (
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 text-center text-sm text-muted-foreground">
+              <div className="rounded-2xl border-2 border-border bg-surface/60 p-6 text-center text-sm text-muted-foreground">
                 No spots match these filters. Try widening your search.
               </div>
             )}
@@ -104,7 +104,7 @@ function MapPage() {
         </aside>
 
         {/* Map */}
-        <section className="relative h-[calc(100vh-7rem)] min-h-[520px] overflow-hidden rounded-3xl border border-border shadow-soft">
+        <section className="relative h-[calc(100vh-7rem)] min-h-[520px] overflow-hidden rounded-3xl border-2 border-border shadow-soft">
           <MockMap spots={filtered} selected={selected} onSelect={setSelected} />
           {selected && <DetailSheet spot={selected} onClose={() => setSelected(null)} />}
         </section>
@@ -278,7 +278,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
           <p className="font-display text-2xl font-bold text-sunset">${spot.pricePerHour}<span className="text-sm text-muted-foreground">/hr</span></p>
         </div>
         <div className="flex gap-2">
-          <button className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-2 text-sm hover:bg-surface">
+          <button className="inline-flex items-center gap-1 rounded-full border-2 border-border px-3 py-2 text-sm hover:bg-surface">
             <Navigation className="h-4 w-4" /> Directions
           </button>
           <button
