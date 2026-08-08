@@ -131,10 +131,11 @@ function SpotCard({ spot, active, onClick }: { spot: Spot; active: boolean; onCl
   const status = spot.available === 0 ? "Full" : spot.available <= 2 ? "Limited" : "Available";
   const statusColor =
     spot.available === 0
-      ? "bg-destructive/20 text-destructive"
+      ? "bg-destructive text-destructive-foreground"
       : spot.available <= 2
-        ? "bg-accent/20 text-accent"
-        : "bg-primary/20 text-primary";
+        ? "bg-primary text-primary-foreground"
+        : "bg-accent text-accent-foreground";
+
   return (
     <button
       onClick={onClick}
