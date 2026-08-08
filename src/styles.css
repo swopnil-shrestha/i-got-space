@@ -36,7 +36,6 @@
   --color-ring: var(--ring);
   --color-ember: var(--ember);
   --color-magenta: var(--magenta);
-  --color-lime: var(--lime);
   --color-violet: var(--violet);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -45,7 +44,7 @@
 :root {
   --radius: 1rem;
 
-  /* Solid theme — electric blue #2727F5 + lime #8EF527 on near-black */
+  /* Solid theme — signature yellow #F5F527 on near-black */
   --background: oklch(0.16 0 0);
   --foreground: oklch(0.97 0 0);
   --surface: oklch(0.20 0 0);
@@ -56,28 +55,26 @@
   --popover: oklch(0.20 0 0);
   --popover-foreground: oklch(0.97 0 0);
 
-  --primary: oklch(0.42 0.28 266);             /* #2727F5 */
-  --primary-foreground: oklch(0.98 0 0);
-  --lime: oklch(0.88 0.24 130);                /* #8EF527 */
-  --lime-foreground: oklch(0.16 0 0);
-  --ember: oklch(0.88 0.24 130);
-  --magenta: oklch(0.42 0.28 266);
-  --violet: oklch(0.55 0.24 266);
+  --primary: oklch(0.94 0.21 108);             /* #F5F527 */
+  --primary-foreground: oklch(0.16 0 0);
+  --ember: oklch(0.94 0.21 108);
+  --magenta: oklch(0.85 0.17 105);
+  --violet: oklch(0.75 0.14 105);
 
   --secondary: oklch(0.26 0 0);
   --secondary-foreground: oklch(0.97 0 0);
   --muted: oklch(0.24 0 0);
   --muted-foreground: oklch(0.72 0 0);
-  --accent: oklch(0.88 0.24 130);
+  --accent: oklch(0.94 0.21 108);
   --accent-foreground: oklch(0.16 0 0);
   --destructive: oklch(0.58 0.20 27);
   --destructive-foreground: oklch(0.98 0 0);
 
   --border: oklch(0.32 0 0);
   --input: oklch(0.32 0 0);
-  --ring: oklch(0.55 0.24 266);
+  --ring: oklch(0.94 0.21 108);
 
-  --shadow-glow: 0 16px 40px -20px oklch(0.42 0.28 266 / 55%);
+  --shadow-glow: 0 16px 40px -20px oklch(0.94 0.21 108 / 45%);
   --shadow-soft: 0 10px 30px -15px oklch(0 0 0 / 60%);
 }
 
@@ -103,12 +100,10 @@
     color: var(--primary-foreground);
   }
   .bg-ember-gradient {
-    background-color: var(--lime);
-    color: var(--lime-foreground);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
-  .bg-lime { background-color: var(--lime); color: var(--lime-foreground); }
-  .text-sunset { color: var(--lime); }
-  .text-lime { color: var(--lime); }
+  .text-sunset { color: var(--primary); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .glass {
