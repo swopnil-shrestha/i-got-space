@@ -96,7 +96,7 @@ function MapPage() {
               <SpotCard key={s.id} spot={s} active={selected?.id === s.id} onClick={() => setSelected(s)} />
             ))}
             {filtered.length === 0 && (
-              <div className="rounded-2xl border-2 border-border bg-surface/60 p-6 text-center text-sm text-muted-foreground">
+              <div className="rounded-2xl border-2 border-border bg-surface p-6 text-center text-sm text-muted-foreground">
                 No spots match these filters. Try widening your search.
               </div>
             )}
@@ -140,14 +140,14 @@ function SpotCard({ spot, active, onClick }: { spot: Spot; active: boolean; onCl
     <button
       onClick={onClick}
       className={`flex w-full gap-3 rounded-2xl border p-3 text-left transition ${
-        active ? "border-primary bg-surface shadow-glow" : "border-border bg-surface/60 hover:border-primary/50"
+        active ? "border-primary bg-surface shadow-glow" : "border-border bg-surface hover:border-primary/50"
       }`}
     >
       <img src={spot.image} alt={spot.name} loading="lazy" className="h-20 w-20 flex-none rounded-xl object-cover" />
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <p className="truncate font-display font-semibold">{spot.name}</p>
-          <span className="flex items-center gap-1 text-xs text-primary">
+          <span className="flex items-center gap-1 text-xs text-secondary">
             <Star className="h-3 w-3 fill-current" />
             {spot.rating}
           </span>
@@ -248,7 +248,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
           </div>
           <p className="truncate text-xs text-muted-foreground">{spot.address}</p>
           <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1 text-primary"><Star className="h-3 w-3 fill-current" />{spot.rating}</span>
+            <span className="flex items-center gap-1 text-secondary"><Star className="h-3 w-3 fill-current" />{spot.rating}</span>
             <span>{spot.distanceKm} km away</span>
             <span>{spot.available}/{spot.total} free</span>
           </div>
@@ -257,7 +257,7 @@ function DetailSheet({ spot, onClose }: { spot: Spot; onClose: () => void }) {
 
       <div className="mt-4 flex flex-wrap gap-2 text-xs">
         {spot.vehicles.map((v) => (
-          <span key={v} className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2 py-1 text-primary">
+          <span key={v} className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-1 text-secondary">
             {v === "car" ? <Car className="h-3 w-3" /> : <Bike className="h-3 w-3" />} {v}
           </span>
         ))}
