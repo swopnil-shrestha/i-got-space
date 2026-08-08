@@ -169,24 +169,20 @@ function MockMap({ spots, selected, onSelect }: { spots: Spot[]; selected: Spot 
       {/* Map base */}
       <div
         className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 30% 20%, oklch(0.30 0.08 30 / 0.65), transparent 60%)," +
-            "radial-gradient(100% 90% at 80% 70%, oklch(0.30 0.10 320 / 0.55), transparent 60%)," +
-            "linear-gradient(135deg, oklch(0.18 0.05 285), oklch(0.22 0.07 320))",
-        }}
+        style={{ background: "var(--surface-2)" }}
       />
       {/* Streets pattern */}
-      <svg className="absolute inset-0 h-full w-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute inset-0 h-full w-full opacity-60" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.75 0.05 80)" strokeWidth="0.6" />
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="oklch(0.16 0 0 / 0.18)" strokeWidth="1" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
-        <path d="M0,70%  Q40%,40% 100%,55%" stroke="oklch(0.78 0.17 65 / 0.6)" strokeWidth="3" fill="none" />
-        <path d="M20%,0 Q40%,60% 30%,100%" stroke="oklch(0.62 0.24 0 / 0.5)" strokeWidth="3" fill="none" />
+        <path d="M0,70%  Q40%,40% 100%,55%" stroke="var(--magenta)" strokeWidth="10" fill="none" />
+        <path d="M20%,0 Q40%,60% 30%,100%" stroke="var(--primary)" strokeWidth="10" fill="none" />
       </svg>
+
 
       {/* You-are-here */}
       <div className="absolute" style={{ left: "50%", top: "55%" }}>
